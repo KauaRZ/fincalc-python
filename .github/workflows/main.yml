@@ -1,0 +1,32 @@
+name: CI - FinCalc
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Verificar sintaxe
+        run: python -m py_compile fincalc.py
+
+      - name: Flake8
+        run: flake8 fincalc.py
+
+      - name: Bandit
+        run: bandit -r fincalc.py
