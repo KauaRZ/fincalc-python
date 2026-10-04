@@ -7,7 +7,10 @@ def calcular_juros_simples(capital: float, taxa_anual: float, anos: int) -> floa
     return capital + juros
 
 
-def calcular_aposentadoria(patrimonio_atual: float, aporte_mensal: float, anos: int, taxa_anual: float) -> float:
+def calcular_aposentadoria(
+        patrimonio_atual: float,
+        aporte_mensal: float, anos: int,
+        taxa_anual: float) -> float:
     """Calcula o patrimônio acumulado para aposentadoria."""
     meses = anos * 12
     taxa_mensal = (taxa_anual / 100) / 12
@@ -16,12 +19,11 @@ def calcular_aposentadoria(patrimonio_atual: float, aporte_mensal: float, anos: 
         saldo = (saldo + aporte_mensal) * (1 + taxa_mensal)
     return saldo
 
+
 def calcular_juros_compostos(capital: float, taxa_anual: float, anos: int) -> float:
     """Calcula o montante final obtido por juros compostos."""
     montante = capital * ((1 + (taxa_anual / 100)) ** anos)
     return montante
-
-    
 
 
 if __name__ == "__main__":
@@ -32,4 +34,3 @@ if __name__ == "__main__":
     print(f"Juros Simples: R$ {montante:.2f}")
     montante_comp = calcular_juros_compostos(1000.0, 5.0, 2)
     print(f"Juros Compostos: R$ {montante_comp:.2f}")
-
