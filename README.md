@@ -61,3 +61,6 @@ main
  ├── feature/conversao-taxa
  ├── feature/lucro-margem
  └── feature/retorno-real
+
+## Status da implementação
+- Valor futuro com aportes: implementado (Aluno 4)
