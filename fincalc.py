@@ -46,4 +46,3 @@ if __name__ == "__main__":
     print(f"Juros Compostos: R$ {montante_comp:.2f}")
     parcela = calcular_parcela_price(10000.0, 1.5, 12)
     print(f"Parcela Price (R$ 10.000, 1,5% a.m., 12 meses): R$ {parcela:.2f}")
-
