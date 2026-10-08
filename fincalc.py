@@ -26,6 +26,15 @@ def calcular_juros_compostos(capital: float, taxa_anual: float, anos: int) -> fl
     return montante
 
 
+def calcular_valor_futuro(
+    aporte_mensal: float, taxa_mensal: float, meses: int
+) -> float:
+    """Calcula o valor futuro acumulado com aportes mensais recorrentes."""
+    i = taxa_mensal / 100
+    vf = aporte_mensal * (((1 + i) ** meses - 1) / i)
+    return vf
+
+
 def calcular_parcela_price(
     valor_emprestimo: float, taxa_mensal: float, meses: int
 ) -> float:
@@ -56,6 +65,8 @@ if __name__ == "__main__":
     print(f"Juros Simples: R$ {montante:.2f}")
     montante_comp = calcular_juros_compostos(1000.0, 5.0, 2)
     print(f"Juros Compostos: R$ {montante_comp:.2f}")
+    vf = calcular_valor_futuro(500.0, 1.0, 12)
+    print(f"Valor Futuro (R$ 500/mês, 1% a.m., 12 meses): R$ {vf:.2f}")
     parcela = calcular_parcela_price(10000.0, 1.5, 12)
     print(f"Parcela Price (R$ 10.000, 1,5% a.m., 12 meses): R$ {parcela:.2f}")
     irrf = calcular_irrf(3000.0)

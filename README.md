@@ -63,4 +63,7 @@ main
  └── feature/retorno-real
 
 ## Status da implementação
+ feature/valor-futuro
+- Valor futuro com aportes: implementado (Aluno 4)
 - Financiamento Price: implementado (Aluno 3)
+
