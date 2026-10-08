@@ -61,3 +61,6 @@ main
  ├── feature/conversao-taxa
  ├── feature/lucro-margem
  └── feature/retorno-real
+
+## Status da implementação
+- Financiamento Price: implementado (Aluno 3)
