@@ -33,6 +33,8 @@ def calcular_valor_futuro(
     i = taxa_mensal / 100
     vf = aporte_mensal * (((1 + i) ** meses - 1) / i)
     return vf
+
+
 def calcular_parcela_price(
     valor_emprestimo: float, taxa_mensal: float, meses: int
 ) -> float:
