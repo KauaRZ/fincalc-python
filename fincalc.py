@@ -45,4 +45,3 @@ if __name__ == "__main__":
     print(f"Juros Compostos: R$ {montante_comp:.2f}")
     vf = calcular_valor_futuro(500.0, 1.0, 12)
     print(f"Valor Futuro (R$ 500/mês, 1% a.m., 12 meses): R$ {vf:.2f}")
-
