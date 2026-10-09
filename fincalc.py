@@ -77,3 +77,5 @@ if __name__ == "__main__":
     print(f"Parcela Price (R$ 10.000, 1,5% a.m., 12 meses): R$ {parcela:.2f}")
     irrf = calcular_irrf(3000.0)
     print(f"IRRF: R$ {irrf:.2f}")
+    margem = calcular_margem_liquida(10000.0, 6500.0)
+    print(f"Margem Líquida: {margem:.2f}%")
