@@ -57,6 +57,12 @@ def calcular_irrf(salario_bruto: float) -> float:
         return (salario_bruto * 0.225) - 662.77
 
 
+def calcular_margem_liquida(receita_total: float, custos_totais: float) -> float:
+    """Calcula a margem de lucro líquida percentual de uma operação."""
+    lucro = receita_total - custos_totais
+    return (lucro / receita_total) * 100
+
+
 if __name__ == "__main__":
     print("Iniciando o sistema FinCalc...")
     patrimonio = calcular_aposentadoria(10000.0, 500.0, 20, 6.0)
@@ -71,3 +77,5 @@ if __name__ == "__main__":
     print(f"Parcela Price (R$ 10.000, 1,5% a.m., 12 meses): R$ {parcela:.2f}")
     irrf = calcular_irrf(3000.0)
     print(f"IRRF: R$ {irrf:.2f}")
+    margem = calcular_margem_liquida(10000.0, 6500.0)
+    print(f"Margem Líquida: {margem:.2f}%")
