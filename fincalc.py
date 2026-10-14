@@ -57,6 +57,12 @@ def calcular_irrf(salario_bruto: float) -> float:
         return (salario_bruto * 0.225) - 662.77
 
 
+def calcular_rendimento_real(ganho_nominal: float, inflacao: float) -> float:
+    """Calcula a taxa de retorno real descontada a inflação do período."""
+    retorno_real = ((1 + (ganho_nominal / 100)) / (1 + (inflacao / 100))) - 1
+    return retorno_real * 100
+
+
 def calcular_margem_liquida(receita_total: float, custos_totais: float) -> float:
     """Calcula a margem de lucro líquida percentual de uma operação."""
     lucro = receita_total - custos_totais
@@ -91,6 +97,8 @@ if __name__ == "__main__":
     print(f"Parcela Price (R$ 10.000, 1,5% a.m., 12 meses): R$ {parcela:.2f}")
     irrf = calcular_irrf(3000.0)
     print(f"IRRF: R$ {irrf:.2f}")
+    rendimento_real = calcular_rendimento_real(10.0, 4.5)
+    print(f"Rendimento Real Ajustado: {rendimento_real:.2f}%")
     margem = calcular_margem_liquida(10000.0, 6500.0)
     print(f"Margem Líquida: {margem:.2f}%")
     depreciacao = calcular_depreciacao_linear(50000.0, 5000.0, 10)
