@@ -1,4 +1,5 @@
-name: CI - FinCalc
+
+name: FinCalc CI/CD Pipeline
 
 on:
   push:
@@ -7,11 +8,13 @@ on:
     branches: [ main ]
 
 jobs:
+  # JOB 1: INTEGRACAO CONTINUA (CI)
   build-and-lint:
+    name: Build Verification & Static Analysis
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout do Código
         uses: actions/checkout@v4
 
       - name: Configurar Python
@@ -19,14 +22,39 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar dependências
-        run: pip install -r requirements.txt
+      - name: Instalar Ferramentas de Análise Estática
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Verificar sintaxe
+      - name: Validar Sintaxe
         run: python -m py_compile fincalc.py
 
-      - name: Flake8
+      - name: Executar Flake8
         run: flake8 fincalc.py
 
-      - name: Bandit
+      - name: Executar Bandit
         run: bandit -r fincalc.py
+
+  # JOB 2: ENTREGA CONTINUA (CD)
+  deploy-simulado-codespaces:
+    name: CD - Deploy Simulado no Codespaces
+    runs-on: self-hosted
+    needs: build-and-lint
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Simular Implantação
+        run: |
+          echo "Iniciando deploy automatico..."
+          mkdir -p /tmp/servidor_producao_fincalc
+          cp -r *.py /tmp/servidor_producao_fincalc/
+          echo "Arquivos copiados para o servidor simulado."
+
+      - name: Teste Final
+        run: |
+          python3 -m py_compile /tmp/servidor_producao_fincalc/fincalc.py
+          echo "DEPLOY CONCLUIDO COM SUCESSO!"
