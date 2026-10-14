@@ -61,6 +61,8 @@ def calcular_margem_liquida(receita_total: float, custos_totais: float) -> float
     """Calcula a margem de lucro líquida percentual de uma operação."""
     lucro = receita_total - custos_totais
     return (lucro / receita_total) * 100
+
+
 def calcular_depreciacao_linear(
     valor_inicial: float,
     valor_residual: float,
