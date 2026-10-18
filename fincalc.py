@@ -58,6 +58,10 @@ def calcular_parcela_price(
 
 def calcular_irrf(salario_bruto: float) -> float:
     """Calcula a alíquota simplificada de Imposto de Renda Retido na Fonte."""
+
+    if salario_bruto < 0:
+        raise ValueError("O salário bruto não pode ser negativo.")
+
     if salario_bruto <= 2259.20:
         return 0.0
     elif salario_bruto <= 2826.65:
