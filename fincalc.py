@@ -41,6 +41,8 @@ def calcular_valor_futuro(
     aporte_mensal: float, taxa_mensal: float, meses: int
 ) -> float:
     """Calcula o valor futuro acumulado com aportes mensais recorrentes."""
+    if aporte_mensal < 0 or taxa_mensal < 0 or meses < 0:
+        raise ValueError("Aporte, taxa e meses não podem ser negativos.")
     i = taxa_mensal / 100
     vf = aporte_mensal * (((1 + i) ** meses - 1) / i)
     return vf
